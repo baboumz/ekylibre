@@ -71,8 +71,10 @@ module Backend
       if params[:bank_statement_item_ids].present?
         bank_items = BankStatementItem.where(id: params[:bank_statement_item_ids].map(&:to_i))
         amount = bank_items.sum(:credit) - bank_items.sum(:debit)
+        to_bank_at = bank_items.min(:transfered_on)
       end
       amount ||= params[:amount].to_f
+      to_bank_at ||= Time.zone.now
       @incoming_payment = resource_model.new(
         accounted_at: params[:accounted_at],
         affair_id: params[:affair_id],
@@ -95,7 +97,7 @@ module Backend
         received: true,
         responsible_id: current_user.id,
         scheduled: params[:scheduled],
-        to_bank_at: Time.zone.today
+        to_bank_at: to_bank_at
       )
       render(locals: { cancel_url: { action: :index }, with_continue: false })
     end

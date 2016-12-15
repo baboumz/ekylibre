@@ -399,7 +399,6 @@
       $(".remaining-reconciliated-credit").text credit.toFixed(2)
 
     _letterItems: (lines) ->
-      console.log letter
       journalLines = lines.filter(".journal-entry-item-type")
       journalIds = journalLines.get().map (line) =>
         @_idForLine line
@@ -413,7 +412,7 @@
         data:
           journal_entry_items: journalIds
           bank_statement_items: bankIds
-        success: (response) ->
+        success: (response) =>
           lines.find(".bank-statement-letter:not(input)").text response.letter
           lines.find("input.bank-statement-letter").val response.letter
           lines.removeClass "selected"

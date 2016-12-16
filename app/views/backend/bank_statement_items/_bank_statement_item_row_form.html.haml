@@ -1,0 +1,25 @@
+= simple_form_for [:backend, bank_statement, item], remote: true do |f|
+  %tr.bank-statement-item-type{ class: "#{item.id}-bank-statement-item" }
+    %td.hidden= f.hidden_field :name, class: "name"
+    %td.hidden= f.hidden_field :transfered_on
+    %td.hidden= f.hidden_field :debit
+    %td.hidden= f.hidden_field :credit
+    %td.hidden= f.hidden_field :letter, class: "bank-statement-letter"
+    %td.hidden= f.hidden_field :initiated_on
+    %td.hidden= f.hidden_field :transaction_number
+
+    %td.del
+      = link_to "#", class: "destroy" do
+        %i
+    %td.type-icon
+      %i
+    %td.name= item.name
+    %td
+    %td.center.debit= item.debit || 0.0
+    %td.center.credit= item.credit || 0.0
+    %td.center.bank-statement-letter= item.letter
+    %td.clear
+      %a{ href: "#" }
+        %i
+        = :clear.tl
+    %td

@@ -1,0 +1,17 @@
+%tr.journal-entry-item-type
+  %td.hidden= hidden_field_tag "journal_entry_items[#{item.id}][bank_statement_letter]", item.bank_statement_letter, class: "bank-statement-letter"
+  %td.del
+  %td.type-icon
+    %i
+  %td.name= item.name
+  %td
+  %td.center.debit= item.real_debit || 0.0
+  %td.center.credit= item.real_credit || 0.0
+  %td.center.bank-statement-letter= item.bank_statement_letter
+  %td.clear
+    %a{ href: "#" }
+      %i
+      = :clear.tl
+  %td.complete
+    %a{ href: "#" }
+      = :complete.tl

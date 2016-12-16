@@ -95,3 +95,80 @@
   }
 
 }
+
+.reconciliation-list {
+  display: flex;
+  flex-direction: column;
+
+  .amounts {
+    display: flex;
+    justify-content: space-around;
+    width: 12.5rem;
+    & > div {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .details {
+    width: 15rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+
+    & > *:first-child {
+      flex: 1;
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+  }
+
+  .date-section {
+    border-bottom: solid 1px red;
+
+    &::first-of-type {
+      border-top: solid 1px red;
+    }
+
+    & > div {
+      display: flex;
+    }
+  }
+
+
+  .totals > div {
+    display: flex
+  }
+}
+
+.reconciliation-item {
+  display: flex;
+  justify-content: flex-end;
+
+  width: 100%;
+
+  i, #delete {
+    width: 3rem;
+  }
+
+  & > div {
+    display: flex;
+  }
+
+  .title {
+    display: flex;
+    flex: 1;
+
+    .name {
+      flex: 1;
+    }
+  }
+}

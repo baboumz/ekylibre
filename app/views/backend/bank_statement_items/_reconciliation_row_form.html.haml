@@ -30,9 +30,6 @@
   - else
     %td.center
       = text_field_tag "items[#{id}][credit]", (item.credit || 0.0), id: "items_#{id}_credit", class: "center credit", data: { exclusive_nullify: "#items_#{id}_debit" }
-  %td.center.bank-statement-letter= item.letter
-  %td.clear
-    %a{ href: "#" }
-      %i
-      Effacer
+  %td.center{colspan: 3}
+    = link_to :save.tl, '#', class: 'save-item btn btn-primary'
   %td

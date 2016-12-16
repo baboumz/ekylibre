@@ -25,6 +25,26 @@
 
     bankReconciliation.initialize()
 
+  $(document).on "click", "a.save-item", ->
+    button = $(@)
+    line = bankReconciliation.closestLine(button)
+    url = '/backend/bank-statements/4/bank-statement-items'
+    data = {}
+    line.find('input').each (index, input) ->
+      console.log input
+      console.log $(input)
+      name = $(input).attr('name').split('[')[2].split(']')[0]
+      data[name] = $(input).val()
+      data[name] = $(input).attr('value') if !data[name]? || data[name] == ''
+    $.ajax url,
+      type: 'POST'
+      data: data
+      success: (data) ->
+        console.log data
+      error: (data) ->
+        console.log data
+    return true
+
   $(document).on "click", "a.destroy", ->
     # Remove bank statement item
     button = $(@)
@@ -399,7 +419,6 @@
       $(".remaining-reconciliated-credit").text credit.toFixed(2)
 
     _letterItems: (lines) ->
-      console.log letter
       journalLines = lines.filter(".journal-entry-item-type")
       journalIds = journalLines.get().map (line) =>
         @_idForLine line

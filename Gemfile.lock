@@ -592,6 +592,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.7.1)
   rails_best_practices
+  redis (~> 3.2)
   remotipart (~> 1.2)
   rest-client
   rgeo-geojson

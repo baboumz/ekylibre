@@ -8,6 +8,7 @@ gem 'rails', '4.2.7.1'
 # Database adapters
 gem 'pg' # Needed for some tasks
 gem 'activerecord-postgis-adapter', '>= 3.0.0'
+gem 'redis', '~>3.2'
 
 # Multi-tenancy
 gem 'apartment', '~> 1.0.0', '< 2.0'
